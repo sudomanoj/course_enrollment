@@ -1,7 +1,24 @@
 from django import forms 
 from django.core.exceptions import ValidationError
-from course.models import Video, Document, Category, MCQQuestion, MCQOption
+from course.models import Video, Document, Category, MCQQuestion, MCQOption, Course
 
+
+class CourseForm(forms.ModelForm):
+    """
+    Form to create the course.
+    """
+    
+    class Meta:
+        model = Course
+        fields = ["title", "category", "description", "published"]
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if isinstance(field, forms.BooleanField):
+                field.widget.attrs.update({'class': 'form-check-input'})
+            else:
+                field.widget.attrs.update({'class': 'form-control'})
 
 class CategoryForm(forms.ModelForm):
     """

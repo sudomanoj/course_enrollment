@@ -7,6 +7,7 @@ from .models import Enrollment
 from student.models import Student
 from course.models import Course
 from enrollment.forms import EnrollmentForm
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 # Create your views here.
 
@@ -21,8 +22,15 @@ class EnrollmentView(View):
         return render(request, self.template_name, context)
     
     
-class EnrollmentAddView(View):
+class EnrollmentAddView(UserPassesTestMixin, View):
     template_name = "enrollment/enrollment_add.html"
+    
+    def test_func(self):
+        return self.request.user.is_superuser
+    
+    def handle_no_permission(self):
+        messages.error(self.request, "You do not have permission to access this page.")
+        return redirect('enrollment-list')
     
     def get(self, request, *args, **kwargs):
         form = EnrollmentForm()
