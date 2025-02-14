@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Courses
+{% endblock title %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Courses</h1>
+        <a href="{% url 'category-add' %}" class="btn btn-success">Add New Course</a>
+    </div>
+
+    <div class="row mt-3">
+        {% for course in courses %}
+            <div class="col-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{course.title}}</h5>
+                        <p class="card-text">{{course.description}}</p>
+                        <a href="{% url 'course-detail' course.slug %}" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock body %}

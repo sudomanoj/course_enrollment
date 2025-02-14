@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Students
+{% endblock title %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Students</h1>
+    </div>
+
+    <div class="row mt-3">
+        {% for student in students %}
+            <div class="col-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title
+                            text-secondary">{{student}}</h5>
+                        <p class="card-text">{{student.user.email}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock body %}

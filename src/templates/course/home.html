@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+
+<div>
+    <h3>Hello, {{request.user.username}}</h3>
+    <h1>Welcome to Course Enrollment</h1>
+    <p>Choose a course from the list below to enroll.</p>
+</div>
+
+
+{% endblock body %}

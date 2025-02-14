@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Enrollment List
+{% endblock title %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Enrollments</h1>
+        <a href="{% url 'enrollment-add' %}" class="btn btn-success">Add New Enrollment</a>
+    </div>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th scope="col">S.N</th>
+                <th scope="col">Student Email</th>
+                <th scope="col">Course Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enrollment in enrollments %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ enrollment.student }}</td>
+                    <td>{{ enrollment.course.title }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock body %}
