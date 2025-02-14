@@ -57,9 +57,6 @@
      python manage.py runserver
     ```
 
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
 ### Contact
 
 Manoj Paudel - [manojpaudel00@gmail.com](mailto:your-manojpaudel00@gmail.com)
